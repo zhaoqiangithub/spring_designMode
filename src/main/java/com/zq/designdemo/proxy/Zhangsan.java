@@ -1,4 +1,4 @@
-package com.zq.designdemo.daili;
+package com.zq.designdemo.proxy;
 
 //张三要相亲
 public class Zhangsan implements Person {

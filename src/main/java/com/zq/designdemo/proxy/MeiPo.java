@@ -1,4 +1,4 @@
-package com.zq.designdemo.daili;
+package com.zq.designdemo.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -12,10 +12,11 @@ public class MeiPo implements InvocationHandler {
     //获取被代理人的个人资料
     public Object getInstance(Person object) throws Exception{
         this.person = object;
-        System.out.println("原来的代理对象："+object);
         Class<? extends Person> aClass = object.getClass();
+        System.out.println("原来的代理对象："+aClass);
         //三个参数  要去代理：第一个参数：classLoader   第二个就是获取他的接口 第三个代理人
         return Proxy.newProxyInstance(aClass.getClassLoader(),aClass.getInterfaces(),this);
+        //后面传this 在Proxy 中通过这个方法传入代理对象（不是被代理对象！） 在Proxy this.h赋值为这个传进去的代理对象 this
     }
 
     @Override

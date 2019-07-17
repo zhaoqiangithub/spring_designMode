@@ -1,4 +1,4 @@
-package com.zq.designdemo.daili;
+package com.zq.designdemo.proxy;
 
 /**
  * 定义规则
