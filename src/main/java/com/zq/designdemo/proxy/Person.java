@@ -11,10 +11,10 @@ public interface Person {
      */
     void findTrueLove();
 
-    String getSex() ;
-
-
-    String getName() ;
+//    String getSex() ;
+//
+//
+//    String getName() ;
 
 
 }

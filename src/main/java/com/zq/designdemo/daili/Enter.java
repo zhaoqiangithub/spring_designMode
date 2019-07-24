@@ -1,11 +1,9 @@
 package com.zq.designdemo.daili;
 
-import sun.misc.ProxyGenerator;
 
-import java.io.FileOutputStream;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
+import com.zq.designdemo.proxy.MeiPo;
+import com.zq.designdemo.proxy.Person;
+import com.zq.designdemo.proxy.Zhangsan;
 
 public class Enter {
     public static void main(String[] args) {

@@ -10,11 +10,11 @@ public class GPMeipo implements GPInvokationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //此处是代理人做筛选
 
-        System.out.println("我是媒婆："+this.person.getName());
+        System.out.println("我是媒婆：");
         System.out.println("开始海选");
         System.out.println("也就是代理前的预处理");
         System.out.println("--------");
-        this.person.findTrueLove();
+        method.invoke(this.person,args);
         System.out.println("--------");
         return null;
     }
