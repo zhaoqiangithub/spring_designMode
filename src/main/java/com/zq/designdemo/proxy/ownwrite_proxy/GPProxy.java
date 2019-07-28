@@ -1,4 +1,4 @@
-package com.zq.designdemo.ownwrite_proxy;
+package com.zq.designdemo.proxy.ownwrite_proxy;
 
 
 import javax.tools.JavaCompiler;
@@ -56,31 +56,27 @@ public class GPProxy {
         }catch (Exception e ){
             e.printStackTrace();
         }
-
-
-
-
-
-
         return null;
     }
 
     private  static String generateSrc(Class<?> interfaces){
         StringBuffer src = new StringBuffer();
-        src.append("package com.zq.designdemo.ownwrite_proxy;" + ln);
+        src.append("package com.zq.designdemo.proxy.ownwrite_proxy;" + ln);
         src.append("import java.lang.reflect.Method;" + ln);
-//        src.append("import com.zq.designdemo.ownwrite_proxy.GPInvokationHandler;" + ln);
-//        src.append("import com.zq.designdemo.proxy.Person;" + ln);
+//        src.append("import com.zq.designdemo.proxy.ownwrite_proxy.GPInvokationHandler;" + ln);
+//        src.append("import com.zq.designdemo.proxy.use_proxy.Person;" + ln);
+        System.out.println(interfaces.getName());
         src.append("public class $Proxy_own implements " + interfaces.getName() +"{" + ln);
+//        src.append("public class $Proxy_own {" + ln);
 
         src.append("GPInvokationHandler h;" + ln);
         src.append("public $Proxy_own(GPInvokationHandler h){" + ln);//构造方法
         src.append("this.h = h;" + ln);
         src.append("}" + ln);
         for (Method m:interfaces.getMethods()) {
-            src.append("public "+ m.getReturnType().getName()+" "+m.getName()+"() {");
+            src.append("public "+ m.getReturnType().getName()+" " + m.getName() + "(){" + ln);
             src.append("try{"+ln);
-            src.append("Method m=" + interfaces.getName() + ".class.getMethod(\"" + m.getName() +"\",new Class[]{});" + ln);
+            src.append("Method m = " + interfaces.getName() + ".class.getMethod(\"" + m.getName() +"\",new Class[]{});" + ln);
             src.append("this.h.invoke(this,m,null);"+ln);
             src.append("}catch(Throwable e){e.printStackTrace();}" +ln);
             src.append("}"+ln);

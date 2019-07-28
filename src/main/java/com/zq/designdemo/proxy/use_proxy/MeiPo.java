@@ -1,4 +1,4 @@
-package com.zq.designdemo.proxy;
+package com.zq.designdemo.proxy.use_proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -28,7 +28,7 @@ public class MeiPo implements InvocationHandler {
         System.out.println("也就是代理前的预处理");
         System.out.println("--------");
         method.invoke(this.person,args);
-        this.person.findTrueLove();
+//        this.person.findTrueLove();
         System.out.println("--------");
         return null;
     }

@@ -1,4 +1,4 @@
-package com.zq.designdemo.ownwrite_proxy;
+package com.zq.designdemo.proxy.ownwrite_proxy;
 
 import com.sun.org.apache.bcel.internal.util.ClassLoader;
 
@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 //实现ClassLoader是jdk里面的一个标准
-//作用：代码重新生成、编译、重新load到JVM中
+//作用：代码重新生成、编译、重新 动态 load到JVM中
 public class GPClassLoader extends ClassLoader {
     private File file;
 
@@ -23,18 +23,19 @@ public class GPClassLoader extends ClassLoader {
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         String className = GPClassLoader.class.getPackage().getName() + "." + name;
         if (this.file != null) {
+            System.out.println(name);
             File classFile = new File(file, name.replaceAll("\\.", "/") + ".class");
             if (classFile.exists()) {
                 FileInputStream in = null;
                 try {
                     in = new FileInputStream(classFile);
-                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
                     byte[] bytes = new byte[1024];//缓冲区
                     int len;
                     while ((len = in.read(bytes)) != -1) {
-                        byteArrayOutputStream.write(bytes, 0, len);
+                        out.write(bytes, 0, len);
                     }
-                     return defineClass(className, byteArrayOutputStream.toByteArray(), 0, byteArrayOutputStream.size());
+                     return defineClass(className, out.toByteArray(), 0, out.size());
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {

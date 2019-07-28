@@ -1,11 +1,13 @@
-package com.zq.designdemo.ownwrite_proxy;
+package com.zq.designdemo.proxy.ownwrite_proxy;
 
-import com.zq.designdemo.proxy.Person;
+
+import com.zq.designdemo.proxy.use_proxy.Person;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 public class GPMeipo implements GPInvokationHandler {
+    private Person person;
+
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //此处是代理人做筛选
@@ -20,7 +22,7 @@ public class GPMeipo implements GPInvokationHandler {
     }
 
 
-    private Person person;
+
 
     //获取被代理人的个人资料
     public Object getInstance(Person object) throws Exception{
@@ -33,5 +35,7 @@ public class GPMeipo implements GPInvokationHandler {
 
         //classLoader暂时没通
         //后面传this 在Proxy 中通过这个方法传入代理对象（不是被代理对象！） 在Proxy this.h赋值为这个传进去的代理对象 this
+
+
     }
 }
