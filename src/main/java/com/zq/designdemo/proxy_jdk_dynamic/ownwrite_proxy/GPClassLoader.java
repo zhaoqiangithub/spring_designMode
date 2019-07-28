@@ -1,4 +1,4 @@
-package com.zq.designdemo.proxy.ownwrite_proxy;
+package com.zq.designdemo.proxy_jdk_dynamic.ownwrite_proxy;
 
 import com.sun.org.apache.bcel.internal.util.ClassLoader;
 

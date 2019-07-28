@@ -1,9 +1,8 @@
-package com.zq.designdemo.proxy.ownwrite_proxy;
+package com.zq.designdemo.proxy_jdk_dynamic.ownwrite_proxy;
 
 
-import com.zq.designdemo.proxy.ownwrite_proxy.GPMeipo;
-import com.zq.designdemo.proxy.use_proxy.Person;
-import com.zq.designdemo.proxy.use_proxy.Zhangsan;
+import com.zq.designdemo.proxy_jdk_dynamic.use_proxy.Person;
+import com.zq.designdemo.proxy_jdk_dynamic.use_proxy.Zhangsan;
 
 public class Enter1 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.zq.designdemo.proxy.ownwrite_proxy;
+package com.zq.designdemo.proxy_jdk_dynamic.ownwrite_proxy;
 
 
 import javax.tools.JavaCompiler;
@@ -61,10 +61,10 @@ public class GPProxy {
 
     private  static String generateSrc(Class<?> interfaces){
         StringBuffer src = new StringBuffer();
-        src.append("package com.zq.designdemo.proxy.ownwrite_proxy;" + ln);
+        src.append("package com.zq.designdemo.proxy_jdk_dynamic.ownwrite_proxy;" + ln);
         src.append("import java.lang.reflect.Method;" + ln);
-//        src.append("import com.zq.designdemo.proxy.ownwrite_proxy.GPInvokationHandler;" + ln);
-//        src.append("import com.zq.designdemo.proxy.use_proxy.Person;" + ln);
+//        src.append("import com.zq.designdemo.proxy_jdk_dynamic.ownwrite_proxy.GPInvokationHandler;" + ln);
+//        src.append("import com.zq.designdemo.proxy_jdk_dynamic.use_proxy.Person;" + ln);
         System.out.println(interfaces.getName());
         src.append("public class $Proxy_own implements " + interfaces.getName() +"{" + ln);
 //        src.append("public class $Proxy_own {" + ln);

@@ -1,4 +1,4 @@
-package com.zq.designdemo.proxy.use_proxy;
+package com.zq.designdemo.proxy_jdk_dynamic.use_proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
