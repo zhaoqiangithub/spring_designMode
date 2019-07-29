@@ -6,7 +6,7 @@ import com.zq.designdemo.proxy_jdk_dynamic.use_proxy.Person;
 import java.lang.reflect.Method;
 
 public class GPMeipo implements GPInvokationHandler {
-    private Person person;
+    private Person person;//被代理对象的引用作为一个成员变量保存了 invoke要用
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

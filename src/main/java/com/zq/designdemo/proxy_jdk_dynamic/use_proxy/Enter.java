@@ -22,7 +22,7 @@ public class Enter {
              *定义代理方法的实现，具体包括代理的预处理（传入被代理对象之前的逻辑）、传入被代理对象、后处理（传入代理对西那个之后的逻辑）等
              */
             //获取代理对象
-//            Person person = (Person)new MeiPo().getInstance(new Zhangsan());
+//            Person person = (Person)new GPMeiPo().getInstance(new Zhangsan());
 //            System.out.println("代理对象"+person.getClass());
             //这里这个person是新的代理对象了不是原来的zhangsan 。代理对象调用findTrueLove 是在调用invoke方法
 //            person.findTrueLove();//由于是动态代理 代理是整个类，整个类都是生成的一个class，所以掉哪一个方法都行。
