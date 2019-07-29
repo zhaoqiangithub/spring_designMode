@@ -1,4 +1,4 @@
-package com.zq.designdemo.factory;
+package com.zq.designdemo.factory.simple;
 
 //迈巴赫
 public class MayBach implements Car {

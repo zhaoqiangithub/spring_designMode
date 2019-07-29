@@ -1,4 +1,4 @@
-package com.zq.designdemo.factory;
+package com.zq.designdemo.factory.simple;
 
 /*
 对于这个代码来说  太强大了

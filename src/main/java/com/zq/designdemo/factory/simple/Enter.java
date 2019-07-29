@@ -1,4 +1,4 @@
-package com.zq.designdemo.factory;
+package com.zq.designdemo.factory.simple;
 
 public class Enter {
     public static void main(String[] args) {
