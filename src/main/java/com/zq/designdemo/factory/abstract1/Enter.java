@@ -1,12 +1,21 @@
 package com.zq.designdemo.factory.abstract1;
 
+import com.zq.designdemo.factory.simple.Car;
+
 public class Enter {
     public static void main(String[] args) {
-        DefaultFactory d = new DefaultFactory();
-        //默认是astonMartin
-        System.out.println(d.getCar().getName());
+//        DefaultFactory d = new DefaultFactory();
+//        //默认是astonMartin
+//        System.out.println(d.getCar().getName());
+//
+//        System.out.println(d.getCar("MayBach").getName());
+        //通过api的方式提供车的实例。对用户而言更安全，对代码维护者而言 更容易扩展，如果需要新加车辆工厂只需要动态维护抽象工厂的api就可以了
+        CarFactory carFactory = new CarFactory();
+        Car astonMartin = carFactory.getAstonMartin();
+        Car mayBach = carFactory.getMayBach();
 
-        System.out.println(d.getCar("MayBach").getName());
+        System.out.println(astonMartin.getName());
+        System.out.println(mayBach.getName());
 
         //对于用户只关注结果 不关注过程
         //对于工厂 可以把固定的流程和工艺封装起来，做的更专一更专业，双方都有好处
