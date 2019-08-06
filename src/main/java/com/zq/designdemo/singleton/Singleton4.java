@@ -4,9 +4,9 @@ public class Singleton4 {
 
 //    这种方式同样利用了classloader的机制来保证初始化instance时只有一个线程
     //为什么用内部类
-    //类中的私有方法是会被反射机制破坏的
-    //由于是静态内部类，在本类还没被实例化的时候，JVM已经加载了，调用内部类的时候，内存就分配了，构造方法是否被反射破坏都不影响单例。更加安全
+    //类中的私有方法是会被反射机制破
     private static class LazyHolder {
+        //final防止内部误操作。子类可能拿到LazyHolder方法，从而改变INSTANCE，所以用final防止子类修改从而产生两个实例
         private static final Singleton4 INSTANCE = new Singleton4();
     }
 
