@@ -1,7 +1,5 @@
 package com.zq.designdemo.proxy_cglib;
 
-import com.zq.designdemo.proxy_jdk_dynamic.use_proxy.Person;
-import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
@@ -14,8 +12,8 @@ public class GPMeiPo implements MethodInterceptor {
     //疑问？
     //好像并没有被代理对象的引用
     //这个引用是由cjlib new出来的 所以public Object getInstance(YunZhong object) throws Exception {
-    //  改为 Class clazz
-//    public Object getInstance(YunZhong object) throws Exception {
+    //改为 Class clazz
+    //public Object getInstance(YunZhong object) throws Exception {
     public Object getInstance(String object) throws Exception {
         //通过反射机制给他实例化
 
