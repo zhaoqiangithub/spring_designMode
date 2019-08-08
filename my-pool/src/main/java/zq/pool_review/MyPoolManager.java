@@ -25,7 +25,10 @@ public class MyPoolManager implements IMyPoolManager {
     //连接池最大二的数据
     private static  int maxCount ;
 
-    public MyPoolManager(){
+    /*
+    私有构造方法
+     */
+    private MyPoolManager(){
         //初始化配置文件
         init();
         //初始化连接池的同时，初始化数据库驱动
@@ -53,7 +56,7 @@ public class MyPoolManager implements IMyPoolManager {
      * @return
      */
     @Override
-    public synchronized MyConnectionPool getMyConnectionPool() {
+    public  MyConnectionPool getMyConnectionPool() {
         //对连接池的非空校验
         if(pools.size() < 0){
             throw new RuntimeException("连接池为空");
@@ -80,7 +83,7 @@ public class MyPoolManager implements IMyPoolManager {
      * 获取连接池的可用连接
      * @return 如果连接空闲，就返回连接；如果全都被占用，就返回空
      */
-    private  MyConnectionPool getRealConnection() throws SQLException {
+    private  synchronized MyConnectionPool getRealConnection() throws SQLException {
         //遍历连接池容器
         for (MyConnectionPool myConnectionPool: pools) {
             if(!myConnectionPool.isBusy()){//如果空闲
@@ -104,7 +107,7 @@ public class MyPoolManager implements IMyPoolManager {
      * @param step
      */
     @Override
-    public  void createMyConnectionPool(int step) {
+    public void createMyConnectionPool(int step) {
         //此处逻辑有两个地方调用，首次启动时调用，和连接池扩容时调用
         //为了避免，客户在配置时，配置的初始连接出大于最大连接数，所以把对 连接数的校验逻辑放到此处
         if(pools.size() > maxCount && pools.size() + step > maxCount){
@@ -123,6 +126,15 @@ public class MyPoolManager implements IMyPoolManager {
                 e.printStackTrace();
             }
         }
-
     }
+
+    //获取单例方法入口
+    public static MyPoolManager getInstance(){
+        return LazyHolder.INSTANCE;
+    }
+    private static final  class LazyHolder{
+        private static final MyPoolManager INSTANCE = new MyPoolManager();
+    }
+
+
 }

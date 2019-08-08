@@ -1,9 +1,6 @@
 package zq.pool_review;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * @Description TODO
@@ -14,18 +11,22 @@ import java.sql.Statement;
 public class Init {
     public static void main(String[] args)  {
 
-        MyPoolManager myPoolManager = new MyPoolManager();
+        MyPoolManager myPoolManager = MyPoolManager.getInstance();
         Runnable aaa = new Runnable() {
             @Override
             public void run() {
                 impl(myPoolManager);
             }
         };
+
+        java.util.Date date = new java.util.Date();
         for(int i =0 ;i < 100 ;i++) {
             Thread thread = new Thread(aaa);
             thread.start();
         }
 
+        java.util.Date  date1 = new java.util.Date();
+        System.out.println("用时:"+ (date1.getTime()-date.getTime()));
     }
 
     //并发测试 100线程并发获取连接池的连接
@@ -52,6 +53,9 @@ public class Init {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            //连接用完，状态置为空闲
+            myConnectionPool.setBusy(false);
         }
     }
 }
