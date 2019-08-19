@@ -5,6 +5,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>my-pool</module>
+        <module>multithread</module>
+        <module>arithmetic</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

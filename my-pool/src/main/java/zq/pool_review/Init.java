@@ -36,26 +36,28 @@ public class Init {
     private static  void impl( MyPoolManager myPoolManager){
 
         //保证多线程环境下，MyPoolManager 单例
-        MyConnectionPool myConnectionPool = myPoolManager.getMyConnectionPool();
+//        MyConnectionPool myConnectionPool = myPoolManager.getMyConnectionPool();
+//
+//        Connection connection = myConnectionPool.getConnection();
+//        Statement statement = null;
+//        ResultSet resultSet = null;
+//        try {
+//            statement = connection.createStatement();
+//            resultSet = statement.executeQuery("select * from courses");
+//
+//            while(resultSet.next()){
+//                int id = resultSet.getInt("id");
+//                String name = resultSet.getString("name");
+//                System.out.println(id +" "+ name);
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }finally {
+//            //连接用完，状态置为空闲
+//            myConnectionPool.setBusy(false);
+//        }
 
-        Connection connection = myConnectionPool.getConnection();
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("select * from courses");
-
-            while(resultSet.next()){
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                System.out.println(id +" "+ name);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            //连接用完，状态置为空闲
-            myConnectionPool.setBusy(false);
-        }
+        System.out.println( (int)Math.random()*10);
     }
 }
