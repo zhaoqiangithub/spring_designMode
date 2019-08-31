@@ -1,4 +1,4 @@
-package zq.pool.tools;
+package zq.pool_review;
 
 /**
  * @Description TODO
@@ -16,6 +16,6 @@ public class DBConfigXML {
     //连接池不足时每次增长值
     public static final int step = 2;
     //连接池最大二的数据
-    public static final int maxCount = 50;
+    public static final int maxCount = 10;
     public static final int maxWaitTime = 3000;
 }
