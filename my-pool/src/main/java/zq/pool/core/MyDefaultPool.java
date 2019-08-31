@@ -84,11 +84,11 @@ public class MyDefaultPool implements IMyPool {
         //分配连接池中可用的连接
         for (MyPooledConnection myPooledConnection: pools) {
             if(!myPooledConnection.isIsbusy()){//如果连接对象 空闲
-                if(myPooledConnection.getConnection().isValid(maxWaitTime)){//如果在最大等待时间内
+                if(myPooledConnection.getConnection().isValid(3000)){//如果在最大等待时间内
                     myPooledConnection.setIsbusy(true);//置为忙
                     return myPooledConnection;
                 }else {
-                    
+
                 }
 
             }
