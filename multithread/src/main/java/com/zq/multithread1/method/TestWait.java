@@ -20,6 +20,11 @@ public class TestWait {
                     System.out.println(Thread.currentThread().getName() + "线程执行");
                     System.out.println(Thread.currentThread().getName() + "唤醒");
                     notify();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -39,11 +44,13 @@ public class TestWait {
             System.out.println(Thread.currentThread().getName()+"启动");
             thread1.start();
             try {
+                Thread.sleep(3000);
                 System.out.println(Thread.currentThread().getName()+"等待，同时释放");
-                thread1.wait();//注意  阻塞的是主线程。
+                thread1.wait();//注意  阻塞的是主线程。 但是只有执行完wait 才能释放thread1对象的同步锁，cpu才能调用thread1线程
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            System.out.println("结束");
         }
     }
 }
