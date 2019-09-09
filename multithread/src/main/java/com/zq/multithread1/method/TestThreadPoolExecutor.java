@@ -16,6 +16,8 @@ public class TestThreadPoolExecutor {
     它的一个Worker对应一个线程
 
 
+
+
     线程池分类
     FixedThreadPool
     SimpleThreadPool
